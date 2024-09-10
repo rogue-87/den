@@ -13,7 +13,7 @@ export async function GET() {
     items: posts.map((post) => ({
       title: post.data.title,
       categories: post.data.tags,
-      author: authorMap.get(post.data.author.id)?.name,
+      author: authorMap.get(post.data.author.id)?.name || "Rogue87",
       description: post.data.desc,
       pubDate: post.data.date,
       link: `${baseUrl}/blogs/${post.slug}`,
