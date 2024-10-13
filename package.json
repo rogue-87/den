@@ -12,20 +12,20 @@
   "dependencies": {
     "@astrojs/check": "^0.7.0",
     "@astrojs/rss": "^4.0.7",
-    "@astrojs/sitemap": "^3.1.6",
-    "@astrojs/ts-plugin": "^1.9.1",
+    "@astrojs/sitemap": "^3.2.0",
+    "@astrojs/ts-plugin": "^1.10.2",
     "@fortawesome/fontawesome-free": "^6.6.0",
-    "astro": "^4.13.1",
-    "sass": "^1.77.8",
-    "typescript": "^5.5.4"
+    "astro": "^4.15.12",
+    "sass": "^1.79.4",
+    "typescript": "^5.6.2"
   },
   "devDependencies": {
-    "@eslint/js": "^9.8.0",
+    "@eslint/js": "^9.12.0",
     "@types/eslint__js": "^8.42.3",
     "eslint": "~9.8.0",
-    "globals": "^15.9.0",
+    "globals": "^15.10.0",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
-    "typescript-eslint": "^8.0.0"
+    "typescript-eslint": "^8.8.1"
   }
 }
