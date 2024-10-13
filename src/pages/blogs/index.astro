@@ -4,7 +4,7 @@ import Layout from "@layouts/Layout.astro";
 import BlogPost from "@components/BlogPost.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
-import "@style/blogs.scss";
+import "@style/blogs.css";
 import { formatDate } from "../../scripts/utils";
 
 const posts = (await getCollection("blogs", ({ data }: CollectionEntry<"blogs">) => data.date <= new Date())).sort(

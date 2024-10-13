@@ -1,4 +1,4 @@
-@forward "abstracts/";
+@import "abstracts/_index.css";
 
 h1 {
   text-align: center;
@@ -36,7 +36,7 @@ main {
   border-radius: 5px;
   background-color: var(--bg-clr-1);
 
-  > #{&}-padding {
+  > .content-padding {
     padding: 16px;
   }
 

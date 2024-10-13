@@ -2,7 +2,8 @@
 import Layout from "@layouts/Layout.astro";
 import Footer from "@components/Footer.astro";
 import pfp from "@assets/images/gideon-graves-scott-pilgrim.gif";
-import "@style/home.scss";
+import "@style/home.css";
+import { Image } from "astro:assets";
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
@@ -18,7 +19,7 @@ const baseUrl = import.meta.env.BASE_URL;
       <div class="row-1">
         <div class="pfp">
           <div class="pfp-border">
-            <img src={pfp.src} alt="Gideon Graves" width="100" />
+            <Image src={pfp} alt="Gideon Graves my beloved :3" width={100} height={100} loading="eager" />
           </div>
         </div>
 
@@ -73,19 +74,19 @@ const baseUrl = import.meta.env.BASE_URL;
         </li>
         <li>
           <i class="fa-brands fa-gitlab" style="color: #e7952d"></i>
-          <a href="https://gitlab.com/rogue-87">gitlab</a>
+          <a href="https://gitlab.com/rogue-87" target="_blank">gitlab</a>
         </li>
         <li>
           <i class="fa-brands fa-github" style="color: black; background-color: white; border-radius: 16px"></i>
-          <a href="https://github.com/rogue-87">github</a>
+          <a href="https://github.com/rogue-87" target="_blank">github</a>
         </li>
         <li>
           <i class="fa-brands fa-twitter" style="color: #3584e4"></i>
-          <a href="https://twitter.com/rogue_cmd">twitter</a>
+          <a href="https://twitter.com/rogue_cmd" target="_blank">twitter</a>
         </li>
         <li>
           <i class="fa-brands fa-steam"></i>
-          <a href="https://steamcommunity.com/id/rogue1987/">steam</a>
+          <a href="https://steamcommunity.com/id/rogue1987/" target="_blank">steam</a>
         </li>
       </ul>
     </nav>
@@ -167,7 +168,6 @@ const baseUrl = import.meta.env.BASE_URL;
   }
 
   socket.onopen = () => {
-    // console.log("WebSocket connection opened");
     socket.send(
       JSON.stringify({
         op: 2,

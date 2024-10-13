@@ -1,5 +1,5 @@
-@forward "abstracts/";
-@use "./utilities/animations/marquee";
+@import "abstracts/_index.css";
+@import "./utilities/animations/marquee.css";
 
 :root {
   --album-size: 150px;
@@ -98,7 +98,7 @@ main {
     gap: 16px;
 
     .pfp {
-      &-border {
+      .pfp-border {
         display: flex;
         border: 1px solid var(--fg-clr-2);
       }

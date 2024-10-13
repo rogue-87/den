@@ -3,6 +3,7 @@ import { getCollection, getEntry } from "astro:content";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Layout from "@layouts/Layout.astro";
+import "@style/abstracts/_index.css";
 
 import { formatDate } from "../../scripts/utils";
 
@@ -67,9 +68,7 @@ const baseUrl = import.meta.env.BASE_URL;
   <Footer />
 </Layout>
 
-<style lang="scss" is:global>
-  @forward "@style/abstracts/";
-
+<style is:global>
   h1 {
     text-align: center;
     margin-top: 0;
@@ -92,7 +91,7 @@ const baseUrl = import.meta.env.BASE_URL;
     border-radius: 5px;
     background-color: var(--bg-clr-1);
 
-    > #{&}-padding {
+    > .md-content-padding {
       padding: 16px;
     }
 

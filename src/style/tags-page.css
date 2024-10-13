@@ -1,4 +1,4 @@
-@forward "abstracts/";
+@import "abstracts/_index.css";
 
 body {
   display: flex;
@@ -11,7 +11,6 @@ header > nav {
 
 h1 {
   text-align: center;
-  margin-top: 0;
 }
 
 main {
@@ -19,28 +18,33 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
 }
 
-.blogs {
-  border-radius: 5px;
+.tags {
+  display: flex;
+  flex-wrap: wrap;
   width: 65%;
+  place-content: center;
+  border-radius: 0.3rem;
   background-color: var(--bg-clr-1);
   border: 2px solid var(--border-clr-1);
-  > #{&}-padding {
+
+  > .tags-padding {
     padding: 16px;
   }
-  h3 {
-    text-align: center;
-  }
-  ul {
-    padding: inherit;
-    margin: initial;
-  }
+}
+
+.tag {
+  margin: 0.25em;
+  border: solid 2px var(--border-clr-1);
+  border-radius: 0.5em;
+  background-color: var(--bg-clr-2);
+  padding: 0.5em 1em;
+  font-size: 1.15em;
 }
 
 @media screen and (320px <= width <= 480px) and (orientation: portrait) {
-  .blogs {
+  .tags {
     width: 92%;
   }
 }
