@@ -14,6 +14,7 @@
       "@style/*": ["src/style/*"]
     },
     "strictNullChecks": true,
-    "allowJs": true
+    "allowJs": true,
+    "skipLibCheck": true
   }
 }

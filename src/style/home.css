@@ -1,10 +1,6 @@
 @import "abstracts/_index.css";
 @import "./utilities/animations/marquee.css";
 
-:root {
-  --album-size: 150px;
-}
-
 body {
   display: flex;
   flex-direction: column;
@@ -29,8 +25,8 @@ h1 {
     "main status"
     "main nav"
     "main music-log";
-
-  > * {
+  & > *:not(astro-island),
+  & > astro-island > div {
     padding: 16px;
     border: 2px solid var(--border-clr-1);
     border-radius: 5px;
@@ -45,38 +41,37 @@ h1 {
       padding: 0 8px;
       position: absolute;
       inset: -14px 10px;
-      content: "";
       white-space: nowrap;
       font-size: 14px;
     }
   }
 
-  > *:nth-child(1) {
+  & main {
     grid-area: main;
-    &:before {
+    &::before {
       content: "Main";
     }
   }
 
-  > *:nth-child(2) {
+  & astro-island .status {
     grid-area: status;
     padding: 12px;
     text-transform: uppercase;
     text-align: center;
-    &:before {
+    &::before {
       text-transform: none;
       content: "Status";
     }
   }
 
-  > *:nth-child(3) {
+  & nav {
     grid-area: nav;
     &:before {
       content: "Navigate";
     }
   }
 
-  > *:nth-child(4) {
+  & astro-island > .music-log {
     grid-area: music-log;
     &:before {
       content: "Currently Playing";
@@ -130,51 +125,6 @@ nav {
   }
 }
 
-.music-log {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-
-  .song-info {
-    overflow-x: hidden;
-    text-align: center;
-    > div {
-      display: flex;
-      gap: 8px;
-      line-height: 1.5rem;
-      align-items: center;
-      white-space: nowrap;
-
-      > i {
-        z-index: 2;
-        min-width: 20px;
-        min-height: 20px;
-        background: var(--bg-clr-1);
-      }
-    }
-  }
-
-  .song-album {
-    border: solid 2px var(--border-clr-1);
-    border-radius: 8px;
-    overflow: hidden;
-    height: var(--album-size);
-    flex-basis: var(--album-size);
-
-    .album-cover {
-      height: inherit;
-      background-image: url("/den/images/nothing.png");
-      background-size: contain;
-      background-position: center;
-    }
-    a {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-  }
-}
-
 /* phones */
 @media screen and (320px <= width <= 480px) and (orientation: portrait) {
   .terminals {
@@ -186,21 +136,6 @@ nav {
       "main"
       "nav"
       "music-log";
-  }
-
-  .music-log {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    .song-info {
-      display: flex;
-      flex-basis: 50%;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .song-album {
-      flex-shrink: 0;
-    }
   }
 }
 @media screen and (320px <= width <= 480px) and (orientation: landscape) {
