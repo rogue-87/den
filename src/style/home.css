@@ -1,5 +1,4 @@
 @import "abstracts/_index.css";
-@import "./utilities/animations/marquee.css";
 
 body {
   display: flex;

@@ -1,42 +1,29 @@
 <script lang="ts">
   import { presenceData } from "../stores/websocket.ts";
-  let song = "...";
-  let artist = "...";
-  let albumArtUrl: string | undefined;
-  let trackId: string | undefined;
-
-  $: if ($presenceData && $presenceData.spotify) {
-    song = $presenceData.spotify.song;
-    artist = $presenceData.spotify.artist;
-    albumArtUrl = $presenceData.spotify.album_art_url;
-    trackId = $presenceData.spotify.track_id;
-  } else {
-    song = "...";
-    artist = "...";
-    albumArtUrl = undefined;
-    trackId = undefined;
-  }
+  $: spotify = $presenceData.spotify;
+  $: isMarquee = spotify?.song && spotify.song.length > 20;
 </script>
 
 <div class="music-log" style="">
   <div class="song-info">
-    <div>
+    <div class={isMarquee ? "marquee" : ""}>
       <i class="fa-solid fa-music"></i>
-      <div class="song" id="song">{song}</div>
+      <div class="song" id="song">{spotify?.song ? spotify.song : "..."}</div>
     </div>
-    <div>
+    <div class={isMarquee ? "marquee" : ""}>
       <i class="fa-solid fa-user"></i>
-      <div class="artist" id="artist">{artist}</div>
+      <div class="artist" id="artist">{spotify?.artist ? spotify.artist : "..."}</div>
     </div>
   </div>
   <div class="song-album">
-    {#if trackId !== undefined}
-      <div class="album-cover" style="background-image: url({albumArtUrl});">
-        <a href={"https://open.spotify.com/track/" + trackId} target="_blank"> </a>
-      </div>
-    {:else}
-      <div class="album-cover"></div>
-    {/if}
+    <div
+      class="album-cover"
+      style="background-image: url({spotify?.album_art_url ? spotify.album_art_url : '/den/images/nothing.png'});"
+    >
+      {#if spotify}
+        <a href={"https://open.spotify.com/track/" + spotify.track_id} target="_blank"> </a>
+      {/if}
+    </div>
   </div>
 </div>
 
@@ -105,6 +92,43 @@
 
     .song-album {
       flex-shrink: 0;
+    }
+  }
+
+  .marquee {
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .marquee div {
+    display: inline-block;
+    width: max-content;
+
+    padding-left: 100%;
+    /* show the marquee just outside the paragraph */
+    will-change: transform;
+    animation: marquee 12s linear infinite;
+  }
+
+  .marquee div:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(-100%, 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee div {
+      animation-iteration-count: 1;
+      animation-duration: 0.01;
+      width: auto;
+      padding-left: 0;
     }
   }
 </style>
